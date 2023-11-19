@@ -14,7 +14,7 @@
     "./index.js"
   ],
   "scripts": {
-    "test": "node --test-reporter=spec --test-reporter-destination=stdout --test-reporter=@reporters/github --test-reporter-destination=stdout --test ./tests/index.test.js"
+    "test": "node --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=@reporters/github --test-reporter-destination=stdout --test ./tests/index.test.js"
   },
   "main": "index.js",
   "author": "Vasilii Krasikov",
