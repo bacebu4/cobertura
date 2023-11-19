@@ -1,0 +1,19 @@
+{
+  "name": "cobertura",
+  "version": "0.0.1-beta.1",
+  "description": "A cobertura reporter for `node:test`",
+  "type": "commonjs",
+  "keywords": [
+    "cobertura",
+    "node:test",
+    "test",
+    "reporter",
+    "reporters"
+  ],
+  "files": [
+    "./index.js"
+  ],
+  "main": "index.js",
+  "author": "Vasilii Krasikov",
+  "license": "MIT"
+}
