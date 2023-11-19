@@ -48,6 +48,10 @@ test:
   coverage: '/all files[^|]*\|[^|]*\s+([\d\.]+)/'
 ```
 
+## Acknowledgements
+
+This test reporter is heavily inspired by test reporters of [this GitHub repo](https://github.com/MoLow/reporters) and some code parts might be directly copied from there.
+
 ## Example
 
 Source file:
