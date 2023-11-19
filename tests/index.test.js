@@ -2,24 +2,7 @@
 
 const { test } = require('node:test');
 const assert = require('assert');
-const reporter = require('../index');
-
-function compareLines(output = '', expected = '') {
-  const outputLines = output.split(/\r?\n/);
-  const expectedLines = expected.split(/\r?\n/);
-  if (outputLines.length !== expectedLines.length) {
-    console.log(`Output: ${outputLines.length} lines`);
-    console.log(output);
-    console.log(`Expected: ${expectedLines.length} lines`);
-    console.log(expected);
-    assert.fail('Output and expected have different number of lines');
-  }
-  for (let i = 0; i < expectedLines.length; i += 1) {
-    // console.log({ expected: expectedLines[i], output: outputLines[i], index: i });
-    assert.strictEqual(outputLines[i], expectedLines[i], `Line ${i} did not match`);
-  }
-  return true;
-}
+const reporter = require('../index.js');
 
 test('empty', async () => {
   const lines = [];
@@ -322,5 +305,5 @@ test('single test', async () => {
       '</coverage>\n',
   ];
 
-  compareLines(lines.join(''), expectedLines.join(''));
+  assert.deepStrictEqual(lines, expectedLines);
 });
