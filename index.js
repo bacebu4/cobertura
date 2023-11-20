@@ -14,18 +14,18 @@ function treeToXML(tree) {
     return `${escapeContent(tree)}\n`;
   }
 
-  const { tag, attrs = {}, nesting, children } = tree;
+  const { tag, attrs = {}, nesting, children = [] } = tree;
   const indent = '\t'.repeat(nesting + 1);
 
   const attrsString = Object.entries(attrs)
     .map(([key, value]) => `${key}="${escapeAttribute(String(value))}"`)
     .join(' ');
 
-  if (!children?.length) {
+  if (!children.length) {
     return `${indent}<${tag} ${attrsString}/>\n`;
   }
 
-  const childrenString = (children ?? []).map(treeToXML).join('');
+  const childrenString = children.map(treeToXML).join('');
 
   return `${indent}<${tag} ${attrsString}>\n${childrenString}${indent}</${tag}>\n`;
 }
