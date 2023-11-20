@@ -82,7 +82,7 @@ test('single test', async () => {
               ],
             },
             {
-              path: '/Users/bacebu4/dev/cobertura-test/src/foo.js',
+              path: '/Users/bacebu4/dev/cobertura-test/foo.js',
               totalLineCount: 13,
               totalBranchCount: 4,
               totalFunctionCount: 1,
@@ -184,6 +184,8 @@ test('single test', async () => {
     .split('=')
     .at(1);
 
+  console.log(lines);
+
   const expectedLines = [
     '<?xml version="1.0" ?>\n',
     '<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">\n',
@@ -237,8 +239,8 @@ test('single test', async () => {
       '\t\t\t\t</lines>\n' +
       '\t\t\t</class>\n' +
       '\t\t</package>\n' +
-      '\t\t<package name="cobertura-test.src" line-rate="0.9333" branch-rate="0.8750">\n' +
-      '\t\t\t<class name="foo.js" filename="src/foo.js" line-rate="0.8462" branch-rate="0.7500">\n' +
+      '\t\t<package name="cobertura-test" line-rate="0.8462" branch-rate="0.7500">\n' +
+      '\t\t\t<class name="foo.js" filename="foo.js" line-rate="0.8462" branch-rate="0.7500">\n' +
       '\t\t\t\t<methods >\n' +
       '\t\t\t\t\t<method name="foo" hits="2" signature="()V">\n' +
       '\t\t\t\t\t\t<lines >\n' +
@@ -262,6 +264,8 @@ test('single test', async () => {
       '\t\t\t\t\t<line number="13" hits="2" branch="false"/>\n' +
       '\t\t\t\t</lines>\n' +
       '\t\t\t</class>\n' +
+      '\t\t</package>\n' +
+      '\t\t<package name="cobertura-test.src" line-rate="1.0000" branch-rate="1.0000">\n' +
       '\t\t\t<class name="foo.test.js" filename="src/foo.test.js" line-rate="1.0000" branch-rate="1.0000">\n' +
       '\t\t\t\t<methods >\n' +
       '\t\t\t\t\t<method name="(anonymous_0)" hits="1" signature="()V">\n' +
