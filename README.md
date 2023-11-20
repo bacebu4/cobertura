@@ -1,4 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/cobertura)](https://www.npmjs.com/package/cobertura)
+![tests](https://github.com/bacebu4/cobertura/actions/workflows/test.yaml/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/bacebu4/cobertura/graph/badge.svg?token=JW6GTZWBSY)](https://codecov.io/gh/bacebu4/cobertura)
 
 # Cobertura Reporter
 
