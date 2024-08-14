@@ -2,7 +2,10 @@
 const path = require('path');
 
 function escapeAttribute(s = '') {
-  return s.replace(/"/g, '&quot;').replace(/\n/g, '');
+  return s.replace(/</g, '&lt;')
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/\n/g, '');
 }
 
 function escapeContent(s = '') {
