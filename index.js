@@ -2,14 +2,14 @@
 const path = require('path');
 
 function escapeAttribute(s = '') {
-  return s.replace(/</g, '&lt;')
-          .replace(/&/g, '&amp;')
+  return s.replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
           .replace(/"/g, '&quot;')
           .replace(/\n/g, '');
 }
 
 function escapeContent(s = '') {
-  return s.replace(/</g, '&lt;').replace(/&/g, '&amp;');
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 }
 
 function treeToXML(tree) {
