@@ -4,7 +4,9 @@
 
 # Cobertura Reporter
 
-A Cobertura reporter for `node:test`. Primarily was created in order to support GitLab's [Test coverage visualization](https://docs.gitlab.com/ee/ci/testing/test_coverage_visualization.html)
+A Cobertura reporter for `node:test`. Primarily was created in order to support GitLab's [Test coverage visualization](https://docs.gitlab.com/ee/ci/testing/test_coverage_visualization.html).
+
+Also you can see the reporter in action in [this GitLab repo](https://gitlab.com/bacebu4/cobertura-test/-/merge_requests/1/diffs).
 
 ## Installation
 
