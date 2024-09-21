@@ -26,6 +26,6 @@
   "homepage": "https://github.com/bacebu4/cobertura#readme",
   "devDependencies": {
     "@reporters/github": "^1.5.3",
-    "cobertura": "^1.0.1"
+    "cobertura": "^1.0.2"
   }
 }
