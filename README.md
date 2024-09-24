@@ -39,7 +39,7 @@ stages:
 
 test:
   stage: test
-  image: node:21-alpine
+  image: node:22-alpine
   artifacts:
     when: always
     reports:
@@ -51,6 +51,10 @@ test:
     - npm run test
   coverage: '/all files[^|]*\|[^|]*\s+([\d\.]+)/'
 ```
+
+## Supported Versions
+
+The reporter can be used with **node v20 and later**, detailed explanation is [here](https://github.com/bacebu4/cobertura/issues/3#issuecomment-2370444363)
 
 ## Acknowledgements
 
