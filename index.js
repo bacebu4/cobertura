@@ -47,7 +47,7 @@ module.exports = async function* coberturaReporter(source) {
         const classes = files.map(f => {
           const relativePath = path.relative(workingDirectory, f.path);
           const dirname = path.dirname(relativePath);
-          const withReplacesSep = dirname.replace(new RegExp(path.sep, 'g'), '.');
+          const withReplacesSep = dirname.replaceAll(path.sep, '.');
 
           const branchesByLine = f.branches.reduce((acc, b) => {
             if (!acc[b.line]) {
