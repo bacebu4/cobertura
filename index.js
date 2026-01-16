@@ -25,12 +25,12 @@ function treeToXML(tree) {
     .join(' ');
 
   if (!children.length) {
-    return `${indent}<${tag} ${attrsString}/>\n`;
+    return `${indent}<${tag}${attrsString && ` ${attrsString}`}/>\n`;
   }
 
   const childrenString = children.map(treeToXML).join('');
 
-  return `${indent}<${tag} ${attrsString}>\n${childrenString}${indent}</${tag}>\n`;
+  return `${indent}<${tag}${attrsString && ` ${attrsString}`}>\n${childrenString}${indent}</${tag}>\n`;
 }
 
 module.exports = async function* coberturaReporter(source) {
@@ -129,64 +129,70 @@ module.exports = async function* coberturaReporter(source) {
               ).toFixed(4),
             },
             nesting: 1,
-            children: value.children.map(c => ({
-              tag: 'class',
-              attrs: {
-                name: c.className,
-                filename: c.filename,
-                'line-rate': c.classLineRate,
-                'branch-rate': c.classBranchRate,
-              },
-              nesting: 2,
-              children: [
-                {
-                  tag: 'methods',
+            children: [
+              {
+                tag: 'classes',
+                nesting: 2,
+                children: value.children.map(c => ({
+                  tag: 'class',
+                  attrs: {
+                    name: c.className,
+                    filename: c.filename,
+                    'line-rate': c.classLineRate,
+                    'branch-rate': c.classBranchRate,
+                  },
                   nesting: 3,
-                  children: c.methods.map(m => ({
-                    tag: 'method',
-                    attrs: {
-                      name: m.name,
-                      hits: m.hits,
-                      signature: m.signature,
-                    },
-                    nesting: 4,
-                    children: [
-                      {
-                        tag: 'lines',
+                  children: [
+                    {
+                      tag: 'methods',
+                      nesting: 4,
+                      children: c.methods.map(m => ({
+                        tag: 'method',
+                        attrs: {
+                          name: m.name,
+                          hits: m.hits,
+                          signature: m.signature,
+                        },
                         nesting: 5,
                         children: [
                           {
-                            tag: 'line',
-                            attrs: {
-                              number: m.number,
-                              hits: m.hits,
-                            },
+                            tag: 'lines',
                             nesting: 6,
+                            children: [
+                              {
+                                tag: 'line',
+                                attrs: {
+                                  number: m.number,
+                                  hits: m.hits,
+                                },
+                                nesting: 7,
+                              },
+                            ],
                           },
                         ],
-                      },
-                    ],
-                  })),
-                },
-                {
-                  tag: 'lines',
-                  nesting: 3,
-                  children: c.lines.map(l => {
-                    const attrs = {
-                      number: l.number,
-                      hits: l.hits,
-                      branch: l.branch,
-                    };
+                      })),
+                    },
+                    {
+                      tag: 'lines',
+                      nesting: 4,
+                      children: c.lines.map(l => {
+                        const attrs = {
+                          number: l.number,
+                          hits: l.hits,
+                          branch: l.branch,
+                        };
 
-                    if (l.branch) {
-                      attrs['condition-coverage'] = l.conditionCoverage;
-                    }
+                        if (l.branch) {
+                          attrs['condition-coverage'] = l.conditionCoverage;
+                        }
 
-                    return { tag: 'line', nesting: 4, attrs };
-                  }),
-                },
-              ],
-            })),
+                        return { tag: 'line', nesting: 5, attrs };
+                      }),
+                    },
+                  ],
+                })),
+              },
+            ],
           })),
         };
 
